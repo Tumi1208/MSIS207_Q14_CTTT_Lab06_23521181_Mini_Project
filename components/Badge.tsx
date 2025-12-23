@@ -9,12 +9,12 @@ type BadgeProps = {
 export default function Badge({
   children,
   className,
-  variant = "soft",
+  variant = "solid",
 }: BadgeProps) {
   const base =
     "inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide";
 
-  const styles: Record<BadgeProps["variant"], string> = {
+  const styles: Record<NonNullable<BadgeProps["variant"]>, string> = {
     solid: "bg-emerald-500 text-white shadow-sm",
     soft: "bg-emerald-100 text-emerald-800 border border-emerald-200",
     outline:

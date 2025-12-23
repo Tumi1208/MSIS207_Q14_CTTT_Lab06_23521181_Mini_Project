@@ -15,10 +15,8 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const ip =
-    request.ip ||
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-    "unknown";
+  const forwarded = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+  const ip = forwarded || request.headers.get("x-real-ip") || "unknown";
   const now = Date.now();
   const entry = counters.get(ip) || { count: 0, firstHit: now };
 

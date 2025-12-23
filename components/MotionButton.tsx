@@ -18,7 +18,7 @@ type MotionButtonProps = {
 
 const transition = {
   duration: 0.4,
-  ease: [0.22, 1, 0.36, 1],
+  ease: [0.22, 1, 0.36, 1] as const,
 };
 
 export default function MotionButton({
@@ -53,7 +53,10 @@ export default function MotionButton({
             className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-100/80 via-emerald-50 to-emerald-100/70 shadow-[0_16px_40px_rgba(49,160,118,0.25)]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition }}
-            exit={{ opacity: 0, transition: { duration: 0.25, ease: "easeOut" } }}
+            exit={{
+              opacity: 0,
+              transition: { duration: 0.25, ease: "easeOut" as const },
+            }}
           />
         ) : null}
       </AnimatePresence>
