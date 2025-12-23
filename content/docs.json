@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "project-overview",
+    "title": "Project Overview & Goals",
+    "summary": "What the mini AI knowledge base demonstrates for Lab 6.",
+    "content": "This mini capstone is a guided showcase of modern Next.js App Router patterns without requiring real AI keys. It pairs static documentation with a simulated retrieval-augmented generation (RAG) experience so you can understand the flow end-to-end. The goals are to practice server actions, edge-style API routes, middleware, and client/server rendering patterns while keeping the UI editorial and minimal. Everything runs locally with predictable data so you can focus on architecture and design quality."
+  },
+  {
+    "slug": "architecture-routing",
+    "title": "Architecture & Routing",
+    "summary": "How the App Router, server components, and layouts fit together.",
+    "content": "The project uses the App Router to split concerns across routes: the home page for orientation, /docs for static server-rendered documentation, /docs/[slug] for detail pages with generateStaticParams, and /ask for a client-driven flow that calls server actions. Layouts provide shared navigation and the editorial shell. The API route at /api/ask mirrors the server action logic to demonstrate a headless interface. This separation keeps SSG-friendly docs fast while allowing the Ask AI route to feel interactive."
+  },
+  {
+    "slug": "design-system",
+    "title": "Design System & Editorial Styling",
+    "summary": "Using a mint-forward editorial theme with reusable components.",
+    "content": "Reusable primitives like Container, SectionTitle, Card, Badge, Divider, and Decorative SVGs create consistency. The palette leans on soft greens, airy spacing, and serif headings (Playfair Display) paired with Inter for body text. Cards use a glassy surface with subtle borders and shadows. Micro-interactions rely on Tailwind utility classes only—no custom animation libraries—so the UI feels crisp without extra dependencies."
+  },
+  {
+    "slug": "ask-ai-simulation",
+    "title": "Ask AI Simulation Logic",
+    "summary": "Server Actions mimic retrieval with deterministic answers.",
+    "content": "The server action accepts a question, normalizes keywords, and scores each document by overlap with title, summary, and content text. It returns a synthesized paragraph plus references to the top matching docs. A small artificial delay is added so the UI can show a “Thinking” state and mimic streaming. Because the dataset is static, results are repeatable and safe for demo environments."
+  },
+  {
+    "slug": "security-middleware",
+    "title": "Edge-Style Middleware & Rate Limiting",
+    "summary": "Protecting the API route with a simple request ceiling.",
+    "content": "Middleware guards the /api/ask endpoint with a tiny in-memory counter per IP. It limits callers to five requests per minute, returning HTTP 429 with a JSON payload when exceeded. This is intentionally lightweight and resets when the server restarts—appropriate for demos but not production. It illustrates how middleware can intercept and shape traffic before it hits your route handlers."
+  },
+  {
+    "slug": "performance-ux",
+    "title": "Performance & UX Patterns",
+    "summary": "Keeping interactions smooth with loading states and responsive layouts.",
+    "content": "Docs routes render as static server components with loading skeletons to avoid blank screens. The Ask AI page uses a client component for the form, skeleton placeholders during server action calls, and gentle hover transitions. Layouts are responsive from mobile through desktop, using generous whitespace, constrained line lengths, and Next.js best practices like next/font and next/image."
+  }
+]

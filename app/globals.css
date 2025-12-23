@@ -1,26 +1,238 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f3fbf7;
+  --foreground: #0f2419;
+  --muted: #4a6155;
+  --border: #d7e9df;
+  --accent: #75d0ab;
+  --accent-strong: #3fa17a;
+  --surface: rgba(255, 255, 255, 0.86);
+  --shadow: 0 24px 80px rgba(11, 44, 27, 0.12);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-surface: var(--surface);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
+  background: radial-gradient(circle at 20% 20%, #e8fff2 0, transparent 25%),
+    radial-gradient(circle at 80% 0%, #d9f5eb 0, transparent 28%),
+    linear-gradient(180deg, #f7fffb 0%, #eef7f1 100%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-playfair), "Times New Roman", serif;
+  letter-spacing: -0.02em;
+  color: #0f1f17;
+}
+
+p {
+  color: #1f2f25;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.prose {
+  max-width: 72ch;
+  color: #1c2a21;
+}
+
+.prose p {
+  margin-bottom: 1.4rem;
+  line-height: 1.8;
+}
+
+.prose h2,
+.prose h3 {
+  margin-top: 2.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.prose ul {
+  margin-left: 1.25rem;
+  list-style: disc;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.glass {
+  background: var(--surface);
+  border: 1px solid rgba(118, 179, 141, 0.3);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+}
+
+.dot-grid {
+  background-image: radial-gradient(#b6dec8 1px, transparent 0);
+  background-size: 24px 24px;
+  opacity: 0.35;
+}
+
+.hover-lift {
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out),
+    border-color 0.3s var(--ease-out);
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 80px rgba(16, 94, 60, 0.18);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+.pressable {
+  transition: transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
+}
+
+.pressable:active {
+  transform: scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pressable:active {
+    transform: none;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    #f2f6f4 0%,
+    #e4f6ec 50%,
+    #f2f6f4 100%
+  );
+  background-size: 200px 100%;
+  animation: shimmer 1.8s infinite;
+}
+
+@keyframes floaty {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.float-slow {
+  animation: floaty 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes pulseDot {
+  0%,
+  20% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+  100% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+}
+
+.thinking-dots {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.thinking-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background-color: #0ea76b;
+  opacity: 0.8;
+  animation: pulseDot 1.2s infinite;
+}
+
+.thinking-dots span:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.thinking-dots span:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+.mint-underline {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+.mint-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, #a2f0ca, #3fa17a);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.mint-underline.is-active::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .hover-lift:hover,
+  .pressable:active {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .float-slow {
+    animation: none !important;
+  }
+
+  .mint-underline::after {
+    transform: scaleX(1);
+  }
 }

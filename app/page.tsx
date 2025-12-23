@@ -1,65 +1,149 @@
-import Image from "next/image";
+import Badge from "@/components/Badge";
+import Button from "@/components/Button";
+import Card from "@/components/Card";
+import Container from "@/components/Container";
+import Decorative from "@/components/Decorative";
+import Divider from "@/components/Divider";
+import SectionTitle from "@/components/SectionTitle";
+import Reveal from "@/components/Reveal";
+import Stagger, { StaggerItem } from "@/components/Stagger";
+
+const features = [
+  {
+    title: "Static Docs (SSG)",
+    description:
+      "Server components render the knowledge base statically for fast, reliable reading.",
+    link: "/docs",
+  },
+  {
+    title: "Ask AI (Server Actions)",
+    description:
+      "A client form calls server actions that simulate retrieval and craft an answer.",
+    link: "/ask",
+  },
+  {
+    title: "Middleware Security",
+    description:
+      "Edge-style middleware rate limits API calls to keep the demo predictable.",
+    link: "/docs/security-middleware",
+  },
+  {
+    title: "Modern App Router",
+    description:
+      "Layouts, loading states, and shared components keep the experience cohesive.",
+    link: "/docs/architecture-routing",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="pb-16 pt-10 sm:pt-14">
+      <Container className="relative overflow-hidden rounded-[32px] border border-emerald-100/80 bg-white/80 px-8 py-12 shadow-2xl ring-1 ring-white/70 sm:px-12">
+        <div className="absolute -left-24 top-16 h-48 w-48 rounded-full bg-emerald-200/40 blur-3xl" />
+        <div className="absolute -right-16 bottom-10 h-64 w-64 rounded-full bg-emerald-100/60 blur-[100px]" />
+
+        <div className="relative grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <Reveal className="space-y-6" variant="fadeUp">
+            <Badge variant="outline">Editorial Mini Capstone</Badge>
+            <h1 className="text-4xl leading-tight sm:text-5xl sm:leading-tight">
+              AI-Powered Knowledge Base in a mint-forward editorial shell.
+            </h1>
+            <p className="max-w-2xl text-lg text-slate-700">
+              Explore a calm, airy interface that pairs static documentation
+              with a simulated Ask AI experience. Built with the Next.js App
+              Router, Tailwind CSS, and thoughtful loading states for Lab 6.
+            </p>
+            <div className="flex flex-wrap items-center gap-4">
+              <Button href="/ask" variant="primary">
+                Ask the Knowledge Base
+              </Button>
+              <Button href="/docs" variant="ghost">
+                Browse Docs
+              </Button>
+            </div>
+            <div className="flex items-center gap-4 text-sm text-slate-600">
+              <span className="flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
+                Server Actions demo
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-emerald-300" />
+                Edge-style middleware
+              </span>
+            </div>
+          </Reveal>
+
+          <Reveal
+            className="relative rounded-3xl bg-white/70 p-6 shadow-lg ring-1 ring-emerald-100/70 backdrop-blur"
+            variant="scaleIn"
+            delay={0.05}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <div className="absolute right-6 top-6 h-20 w-20 opacity-70">
+              <Decorative variant="halo" className="h-full w-full" />
+            </div>
+            <div className="relative space-y-4">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-600">
+                How it works
+              </p>
+              <h3 className="text-2xl font-semibold text-slate-900">
+                Ask in plain English, get grounded responses.
+              </h3>
+              <p className="text-slate-600">
+                Type a question on the Ask page, and a server action will comb
+                through the docs JSON to craft a concise answer with references.
+                A small delay fakes streaming so the UI feels alive.
+              </p>
+              <Divider />
+              <div className="grid gap-3 sm:grid-cols-2">
+                <div className="rounded-2xl border border-emerald-100/70 bg-emerald-50/60 px-4 py-3 text-sm font-semibold text-emerald-900">
+                  ✅ Static docs with SSG-style rendering
+                </div>
+                <div className="rounded-2xl border border-emerald-100/70 bg-white/80 px-4 py-3 text-sm font-semibold text-emerald-900">
+                  ⚡ Server actions + API parity
+                </div>
+                <div className="rounded-2xl border border-emerald-100/70 bg-white/80 px-4 py-3 text-sm font-semibold text-emerald-900">
+                  🧭 Middleware demo rate limits
+                </div>
+                <div className="rounded-2xl border border-emerald-100/70 bg-emerald-50/60 px-4 py-3 text-sm font-semibold text-emerald-900">
+                  📐 Editorial-grade UI polish
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
-      </main>
+      </Container>
+
+      <Container className="mt-16 space-y-10">
+        <Reveal variant="fadeUp">
+          <SectionTitle
+            eyebrow="What this project does"
+            title="A modern, minty knowledge base with simulated AI"
+            description="Explore the feature grid to see how the App Router, server actions, middleware, and editorial styling come together."
+            align="center"
+          />
+        </Reveal>
+
+        <Stagger className="grid gap-6 sm:grid-cols-2">
+          {features.map((feature) => (
+            <StaggerItem key={feature.title} className="h-full">
+              <Card href={feature.link} className="flex h-full flex-col justify-between">
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold text-slate-900">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-slate-600">
+                    {feature.description}
+                  </p>
+                </div>
+                <div className="mt-6 flex items-center justify-between text-sm font-semibold text-emerald-700">
+                  <span className="hover:underline">View more</span>
+                  <span aria-hidden>→</span>
+                </div>
+              </Card>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      </Container>
     </div>
   );
 }
