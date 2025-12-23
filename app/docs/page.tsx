@@ -1,7 +1,9 @@
+import { ArrowRight, BookOpen } from "lucide-react";
 import Badge from "@/components/Badge";
 import Card from "@/components/Card";
 import Container from "@/components/Container";
 import SectionTitle from "@/components/SectionTitle";
+import Icon from "@/components/Icon";
 import { getDocs } from "@/lib/knowledge";
 import Reveal from "@/components/Reveal";
 import Stagger, { StaggerItem } from "@/components/Stagger";
@@ -34,7 +36,10 @@ export default async function DocsPage() {
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between text-xs font-semibold text-emerald-700">
-                    <Badge variant="soft">Doc</Badge>
+                    <div className="flex items-center gap-2">
+                      <Badge variant="soft">Doc</Badge>
+                      <Icon icon={BookOpen} size={16} className="text-emerald-700/70" />
+                    </div>
                     <span className="text-slate-500">~3 min read</span>
                   </div>
                   <h3 className="text-xl font-semibold text-slate-900">
@@ -44,7 +49,7 @@ export default async function DocsPage() {
                 </div>
                 <div className="mt-6 flex items-center justify-between text-sm font-semibold text-emerald-700">
                   <span className="hover:underline">Read the doc</span>
-                  <span aria-hidden>→</span>
+                  <Icon icon={ArrowRight} size={18} />
                 </div>
               </Card>
             </StaggerItem>

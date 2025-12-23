@@ -1,8 +1,10 @@
+import { MessageSquareText, ShieldCheck, Sparkles } from "lucide-react";
 import Badge from "@/components/Badge";
 import Container from "@/components/Container";
 import Decorative from "@/components/Decorative";
 import SectionTitle from "@/components/SectionTitle";
 import AskForm from "@/components/AskForm";
+import FeaturePill from "@/components/FeaturePill";
 import Reveal from "@/components/Reveal";
 
 export const metadata = {
@@ -28,6 +30,11 @@ export default function AskPage() {
                 like streaming, and returns an answer grounded in the docs JSON.
                 Everything runs locally so you can explore the pattern safely.
               </p>
+              <div className="flex flex-wrap gap-2">
+                <FeaturePill icon={MessageSquareText} label="Ask" size={16} />
+                <FeaturePill icon={Sparkles} label="Synthesize" size={16} />
+                <FeaturePill icon={ShieldCheck} label="Rate limited" size={16} />
+              </div>
             </div>
           </div>
         </Reveal>

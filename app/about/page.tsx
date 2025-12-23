@@ -1,5 +1,7 @@
+import { Info, LayoutPanelLeft, Sparkles } from "lucide-react";
 import Container from "@/components/Container";
 import Divider from "@/components/Divider";
+import Icon from "@/components/Icon";
 
 export const metadata = {
   title: "About | AI Knowledge Base",
@@ -13,7 +15,8 @@ export default function AboutPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-600">
             About this mini capstone
           </p>
-          <h1 className="text-4xl font-semibold text-slate-900">
+          <h1 className="flex items-center gap-2 text-4xl font-semibold text-slate-900">
+            <Icon icon={Info} size={26} />
             Built for MSIS207 Lab 6 with a focus on clarity and craft.
           </h1>
           <p className="text-lg text-slate-700">
@@ -28,7 +31,8 @@ export default function AboutPage() {
 
         <div className="grid gap-6 sm:grid-cols-2">
           <div className="space-y-2 rounded-2xl border border-emerald-100/80 bg-white/80 p-5 shadow-sm">
-            <h3 className="text-lg font-semibold text-slate-900">
+            <h3 className="flex items-center gap-2 text-lg font-semibold text-slate-900">
+              <Icon icon={Sparkles} size={20} />
               Design Principles
             </h3>
             <p className="text-sm text-slate-600">
@@ -38,7 +42,8 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="space-y-2 rounded-2xl border border-emerald-100/80 bg-white/80 p-5 shadow-sm">
-            <h3 className="text-lg font-semibold text-slate-900">
+            <h3 className="flex items-center gap-2 text-lg font-semibold text-slate-900">
+              <Icon icon={LayoutPanelLeft} size={20} />
               Technical Highlights
             </h3>
             <p className="text-sm text-slate-600">

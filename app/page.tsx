@@ -1,9 +1,11 @@
+import { ArrowRight, BookOpen, Palette, ShieldCheck, Sparkles } from "lucide-react";
 import Badge from "@/components/Badge";
 import Button from "@/components/Button";
 import Card from "@/components/Card";
 import Container from "@/components/Container";
 import Decorative from "@/components/Decorative";
 import Divider from "@/components/Divider";
+import Icon from "@/components/Icon";
 import SectionTitle from "@/components/SectionTitle";
 import Reveal from "@/components/Reveal";
 import Stagger, { StaggerItem } from "@/components/Stagger";
@@ -14,24 +16,28 @@ const features = [
     description:
       "Server components render the knowledge base statically for fast, reliable reading.",
     link: "/docs",
+    icon: BookOpen,
   },
   {
     title: "Ask AI (Server Actions)",
     description:
       "A client form calls server actions that simulate retrieval and craft an answer.",
     link: "/ask",
+    icon: Sparkles,
   },
   {
     title: "Middleware Security",
     description:
       "Edge-style middleware rate limits API calls to keep the demo predictable.",
     link: "/docs/security-middleware",
+    icon: ShieldCheck,
   },
   {
     title: "Modern App Router",
     description:
       "Layouts, loading states, and shared components keep the experience cohesive.",
     link: "/docs/architecture-routing",
+    icon: Palette,
   },
 ];
 
@@ -61,7 +67,7 @@ export default function Home() {
                 Browse Docs
               </Button>
             </div>
-            <div className="flex items-center gap-4 text-sm text-slate-600">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600">
               <span className="flex items-center gap-2">
                 <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
                 Server Actions demo
@@ -95,17 +101,21 @@ export default function Home() {
               </p>
               <Divider />
               <div className="grid gap-3 sm:grid-cols-2">
-                <div className="rounded-2xl border border-emerald-100/70 bg-emerald-50/60 px-4 py-3 text-sm font-semibold text-emerald-900">
-                  ✅ Static docs with SSG-style rendering
+                <div className="flex items-center gap-2 rounded-2xl border border-emerald-100/70 bg-emerald-50/60 px-4 py-3 text-sm font-semibold text-emerald-900">
+                  <Icon icon={BookOpen} size={18} />
+                  Static docs with SSG-style rendering
                 </div>
-                <div className="rounded-2xl border border-emerald-100/70 bg-white/80 px-4 py-3 text-sm font-semibold text-emerald-900">
-                  ⚡ Server actions + API parity
+                <div className="flex items-center gap-2 rounded-2xl border border-emerald-100/70 bg-white/80 px-4 py-3 text-sm font-semibold text-emerald-900">
+                  <Icon icon={Sparkles} size={18} />
+                  Server actions + API parity
                 </div>
-                <div className="rounded-2xl border border-emerald-100/70 bg-white/80 px-4 py-3 text-sm font-semibold text-emerald-900">
-                  🧭 Middleware demo rate limits
+                <div className="flex items-center gap-2 rounded-2xl border border-emerald-100/70 bg-white/80 px-4 py-3 text-sm font-semibold text-emerald-900">
+                  <Icon icon={ShieldCheck} size={18} />
+                  Middleware demo rate limits
                 </div>
-                <div className="rounded-2xl border border-emerald-100/70 bg-emerald-50/60 px-4 py-3 text-sm font-semibold text-emerald-900">
-                  📐 Editorial-grade UI polish
+                <div className="flex items-center gap-2 rounded-2xl border border-emerald-100/70 bg-emerald-50/60 px-4 py-3 text-sm font-semibold text-emerald-900">
+                  <Icon icon={Palette} size={18} />
+                  Editorial-grade UI polish
                 </div>
               </div>
             </div>
@@ -137,7 +147,7 @@ export default function Home() {
                 </div>
                 <div className="mt-6 flex items-center justify-between text-sm font-semibold text-emerald-700">
                   <span className="hover:underline">View more</span>
-                  <span aria-hidden>→</span>
+                  <Icon icon={ArrowRight} size={18} />
                 </div>
               </Card>
             </StaggerItem>
